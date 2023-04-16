@@ -37,6 +37,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "core",
+    "oauth2_provider",
+    "smtp_imap_provider",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.microsoft",
+    "lead",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +133,55 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+GOOGLE_OAUTH2_CLIENT_CONFIG = {
+    "web": {
+        "client_id": "1003448645050-gk8m8u7g0piv5qtlag7aidcd2rk451lg.apps.googleusercontent.com"
+    }
+}
+
+GOOGLE_OAUTH2_SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+]
+GOOGLE_OAUTH2_CALLBACK_URL = "http://localhost:8080/"
+GOOGLE_CLIENT_ID = (
+    "1003448645050-gk8m8u7g0piv5qtlag7aidcd2rk451lg.apps.googleusercontent.com"
+)
+GOOGLE_CLIENT_SECRET = "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"
+# django-allauth settings
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "SCOPE": ["email", "profile"],
+            "AUTH_PARAMS": {"access_type": "online"},
+            "METHOD": "oauth2",
+            "client_id": GOOGLE_CLIENT_ID,
+            "secret": GOOGLE_CLIENT_SECRET,
+            # "redirect_uri": "http://127.0.0.1:8000/",
+            "OAUTH_PKCE_ENABLED": True,
+            "VERIFIED_EMAIL": False,
+            "HIDDEN": False,
+            "ORDER": 1,
+        }
+    },
+    "microsoft": {
+        "SCOPE": ["openid", "email", "profile"],
+        "METHOD": "oauth2",
+        "CLIENT_ID": "OUTLOOK_OAUTH2_CLIENT_ID",
+        "SECRET": "OUTLOOK_OAUTH2_CLIENT_SECRET",
+        "VERIFIED_EMAIL": False,
+        "HIDDEN": False,
+        "ORDER": 2,
+    },
+}
+
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_STORE_TOKENS = True
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
