@@ -1,5 +1,12 @@
 from django.urls import path
-from .views import campaign_list, CampaignCreateView, CampaignEditView, CampaignDeleteView, CampaignDetailView
+from .views import (
+    campaign_list,
+    CampaignCreateView,
+    CampaignEditView,
+    CampaignDeleteView,
+    CampaignDetailView,
+)
+
 urlpatterns = [
     path("", campaign_list, name="campaign_list"),
     path("create/", CampaignCreateView.as_view(), name="campaign_create"),

@@ -4,7 +4,6 @@ from core.models import ConnectedEmail
 from lead.models import Lead
 
 
-# Create your models here.
 class Campaign(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)

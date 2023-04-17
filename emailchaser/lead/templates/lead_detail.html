@@ -7,9 +7,11 @@
     <li><strong>Company:</strong> {{ lead.company }}</li>
     <li><strong>Website:</strong> {{ lead.website }}</li>
     <li><strong>Date Added:</strong> {{ lead.date_added }}</li>
+    <li><strong>Registered User:</strong> {{ lead.registered_user }}</li>
   </ul>
   <a href="{% url 'lead_update' lead.id %}">Edit</a> |
-  <a href="{% url 'lead_delete' lead.id %}">Delete</a>
+  <a href="{% url 'lead_delete' lead.id %}">Delete</a> |
+  <a href="{% url 'lead_list' %}">Back</a>
   <p>
     <hr>
     <a href="{% url 'account_logout' %}">logout</a>

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Home Page   {{user.user_name}} {{user.email_address}}</h1>
+    <h1>Welcome to the Home Page   {{ username }} {{ useremail }}</h1>
     <ul>
         <li><a href="{% url 'lead_list' %}">Go to Leads</a></li>
         <li><a href="{% url 'campaign_list' %}">Go to Campaigns</a></li>

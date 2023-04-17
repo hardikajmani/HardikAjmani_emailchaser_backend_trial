@@ -27,7 +27,7 @@
                 <td>
                     <a href="{% url 'lead_detail' lead.id %}">View</a> |
                     <a href="{% url 'lead_update' lead.id %}">Edit</a> |
-                    <a href="{% url 'lead_delete' lead.id %}">Delete</a>
+                    <a href="{% url 'lead_delete' lead.id %}">Delete</a> |
                 </td>
             </tr>
             {% endfor %}
@@ -36,7 +36,9 @@
     <a href="{% url 'lead_create' %}">Create new lead</a>
     <p>
         <hr>
-        <a href="{% url 'account_logout' %}">logout</a>
+        <a href="{% url 'account_logout' %}">logout</a> |
+        <a href="{% url 'home'  %}">Home</a> |
+        <a href="{% url 'campaign_list' %}">Go to Campaign!</a>
     </p>
 </body>
 </html>

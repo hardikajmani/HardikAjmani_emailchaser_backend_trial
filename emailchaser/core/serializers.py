@@ -1,11 +1,5 @@
 from rest_framework import serializers
-from .models import User, ConnectedEmail
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ("id", "first_name", "last_name", "email")
+from .models import ConnectedEmail
 
 
 class ConnectedEmailSerializer(serializers.ModelSerializer):

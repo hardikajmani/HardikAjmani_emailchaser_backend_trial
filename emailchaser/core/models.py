@@ -12,17 +12,22 @@ class ConnectedEmail(models.Model):
     expires_at = models.DateTimeField(null=True, blank=True)
 
     @classmethod
-    def create_from_social_account(cls, sociallogin):
+    def create_from_social_account(cls, user, sociallogin):
         return cls(
-            user=sociallogin.user,
+            user=user,
             email=sociallogin.account.extra_data.get("email", None),
             provider=sociallogin.account.provider,
-            token=sociallogin.account.extra_data.get("at_hash", None),
+            token=sociallogin.token.token,
             refresh_token=None,
-            expires_at=datetime.datetime.fromtimestamp(
-                sociallogin.account.extra_data.get("exp", 0)
-            ),
+            expires_at=sociallogin.token.expires_at,
         )
+
+    @classmethod
+    def update(self, sociallogin):
+        self.token = sociallogin.token.token
+        self.refresh_token = None
+        self.expires_at = sociallogin.token.expires_at
+        self.save()
 
     def __str__(self):
         return self.email

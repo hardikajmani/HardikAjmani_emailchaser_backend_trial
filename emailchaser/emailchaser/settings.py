@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.microsoft",
     "lead",
-    "campaign"
+    "campaign",
 ]
 
 MIDDLEWARE = [
@@ -177,7 +177,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_STORE_TOKENS = True
-# LOGIN_REDIRECT_URL = "/oauth2/google-thanks/"
+
 ACCOUNT_ADAPTER = "oauth2_provider.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "oauth2_provider.adapters.SocialAccountAdapter"
 AUTHENTICATION_BACKENDS = [

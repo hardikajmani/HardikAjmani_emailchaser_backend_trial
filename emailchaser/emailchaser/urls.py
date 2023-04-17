@@ -23,7 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
     path("accounts/", include("allauth.urls"), name="accounts"),
-    # path("oauth2/", include("oauth2_provider.urls")),
     path("lead/", include("lead.urls"), name="leads"),
     path("campaign/", include("campaign.urls"), name="campaigns"),
 ]

@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-# Create your views here.
 
 @login_required
 def home(request):
     user = request.user
-    context = {'user': user}
-    return render(request, 'home.html', context)
+    context = {"username": user.username, "useremail": user.email}
+    print(user.username)
+    return render(request, "home.html", context)
