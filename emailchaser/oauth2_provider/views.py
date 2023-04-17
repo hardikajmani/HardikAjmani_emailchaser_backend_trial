@@ -26,7 +26,7 @@ from rest_framework.decorators import api_view
 
 
 @api_view(["GET"])
-def google_oauth2_callback(request):
+def google_after_login_callback(request):
     social_account = SocialAccount.objects.get(provider='Google')
     social_token = SocialToken.objects.get(account=social_account)
     access_token = social_token.token

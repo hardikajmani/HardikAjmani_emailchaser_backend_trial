@@ -10,4 +10,8 @@
   </ul>
   <a href="{% url 'lead_update' lead.id %}">Edit</a> |
   <a href="{% url 'lead_delete' lead.id %}">Delete</a>
+  <p>
+    <hr>
+    <a href="{% url 'account_logout' %}">logout</a>
+  </p>
 {% endblock %}

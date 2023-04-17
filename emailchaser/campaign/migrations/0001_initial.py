@@ -10,20 +10,21 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ("lead", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Lead",
+            name="Campaign",
             fields=[
                 ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("user_name", models.CharField(max_length=50)),
-                ("email_address", models.EmailField(max_length=254)),
-                ("company", models.CharField(max_length=255)),
-                ("website", models.URLField()),
+                ("name", models.CharField(max_length=50)),
+                ("message", models.TextField()),
+                ("schedule_time", models.DateTimeField()),
+                ("leads", models.ManyToManyField(to="lead.lead")),
                 (
-                    "registered_user",
+                    "registerd_user",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         to=settings.AUTH_USER_MODEL,

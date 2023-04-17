@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h2>Create Lead</h2>
+  <h1>Edit Campaign</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -10,5 +10,5 @@
   <p>
     <hr>
     <a href="{% url 'account_logout' %}">logout</a>
-  </p>
+</p>
 {% endblock %}

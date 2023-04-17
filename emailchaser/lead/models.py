@@ -1,6 +1,5 @@
 from django.db import models
-from core.models import User
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Lead(models.Model):

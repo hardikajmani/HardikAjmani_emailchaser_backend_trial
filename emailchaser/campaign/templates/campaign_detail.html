@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ campaign.name }}</h1>
+<p>{{ campaign.message }}</p>
+<h3>Leads:</h3>
+    <ul>
+    {% for lead in leads %}
+        <li>{{ lead.email_address }}</li>
+    {% endfor %}
+    </ul>
+
+  <a href="{% url 'campaign_edit' campaign.id %}">Edit</a> |
+  <a href="{% url 'campaign_delete' campaign.id %}">Delete</a>
+
+<h4> <a href="{% url 'campaign_list' %}">Back</a> </h4>
+<p>
+  <hr>
+  <a href="{% url 'account_logout' %}">logout</a>
+</p>
+{% endblock %}
+
+
+
+

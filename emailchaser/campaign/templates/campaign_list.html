@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Campaigns</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Schedule Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in campaigns %}
+                <tr>
+                    <td>{{ campaign.id }}</td>
+                    <td>{{ campaign.name }}</td>
+                    <td>{{ campaign.message }}</td>
+                    <td>{{ campaign.schedule_time }}</td>
+                    <td>
+                        <a href="{% url 'campaign_detail' campaign.id %}">View</a>
+                        <a href="{% url 'campaign_edit' campaign.id %}">Edit</a> |
+                        <a href="{% url 'campaign_delete' campaign.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No campaigns found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <a href="{% url 'campaign_create' %}">Create new campaign!</a>
+    </table>
+    <p>
+        <hr>
+        <a href="{% url 'account_logout' %}">logout</a>
+    </p>
+
+{% endblock %}

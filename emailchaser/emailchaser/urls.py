@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core.views import home
-from oauth2_provider.views import outlook_oauth2_callback
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
-    path('accounts/', include('allauth.urls')),
-    path('oauth2/', include('oauth2_provider.urls')),
-    path("lead/", include("lead.urls")),
+    path("accounts/", include("allauth.urls"), name="accounts"),
+    # path("oauth2/", include("oauth2_provider.urls")),
+    path("lead/", include("lead.urls"), name="leads"),
+    path("campaign/", include("campaign.urls"), name="campaigns"),
 ]

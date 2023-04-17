@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.microsoft",
     "lead",
+    "campaign"
 ]
 
 MIDDLEWARE = [
@@ -167,12 +168,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     "microsoft": {
         "SCOPE": ["openid", "email", "profile"],
-        "METHOD": "oauth2",
-        "CLIENT_ID": "OUTLOOK_OAUTH2_CLIENT_ID",
-        "SECRET": "OUTLOOK_OAUTH2_CLIENT_SECRET",
-        "VERIFIED_EMAIL": False,
-        "HIDDEN": False,
-        "ORDER": 2,
+        # "tenant": secrets.AZURE_AD_TENANT_ID,
+        # "client_id": secrets.AZURE_AD_CLIENT_ID,
     },
 }
 
@@ -180,7 +177,9 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_STORE_TOKENS = True
-
+# LOGIN_REDIRECT_URL = "/oauth2/google-thanks/"
+ACCOUNT_ADAPTER = "oauth2_provider.adapters.AccountAdapter"
+SOCIALACCOUNT_ADAPTER = "oauth2_provider.adapters.SocialAccountAdapter"
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
