@@ -10,3 +10,4 @@ Steps to setup
 - `python manage.py migrate`
 - `python manage.py createsuperuser`
 - `python manage.py runserver`
+- head to http://127.0.0.1:8000/
